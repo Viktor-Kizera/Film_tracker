@@ -1,0 +1,10 @@
+<h1>New comment</h1>
+
+<%= form_with model: @comment, url: film_comment_path(@comment.film_id) do |f| %>
+  <h2>Update Comments</h2>
+  <div>
+    <%= f.label :body %>
+    <%= f.text_field :body %>
+  </div>
+  <%= f.submit %>
+<% end %>

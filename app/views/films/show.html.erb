@@ -1,0 +1,9 @@
+<h1 style="color: green"><%= @film.name %></h1>
+<h3 style="color: orangered"><%= @film.author %> <%= @film.genre %> <%= @film.year %></h3>
+<p><%= link_to "add comment", new_film_comment_path(film_id: @film.id) if user_signed_in? %></p>
+<% @comments.each do |comment| %>
+  <p><%= comment.user.email %></p>
+  <p><%= comment.body %></p>
+  <%= link_to 'edit', edit_film_comment_path(comment.film, comment) %>
+  <%= link_to 'delete', film_comment_path(comment.film, comment), data: { turbo_method: :delete } %>
+<% end %>
