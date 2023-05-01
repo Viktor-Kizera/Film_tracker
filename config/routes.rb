@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :films do
     resources :comments, only: [:new, :edit, :update, :create, :destroy]
   end
+  resources :users, only: [:update, :edit]
 end
