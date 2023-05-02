@@ -1,9 +1,28 @@
-<% @films.each do |film| %>
-  <h1 style="color: green"><%= link_to film.name, film_path(film) %> </h1>
-  <h3 style="color: orangered"><%= film.author %> <%= film.genre %> <%= film.year %></h3>
-  <p><%= link_to 'edit', edit_film_path(film) %></p>
-  <p><%= link_to "add comment", new_film_comment_path(film_id: film.id) if user_signed_in? %></p>
-<!--  <h2 style="color: red"></h2>-->
-<!--  <h2 style="color: red"></h2>-->
-<!--  <h2 style="color: red"></h2>-->
-<% end %>
+<div class="columns">
+  <% @films.each do |film| %>
+  <div class="column is-one-third">
+    <div class="card">
+      <div class="card-content">
+        <p class="title">
+          <%= link_to film.name, film_path(film) %>
+        </p>
+        <p class="subtitle">
+          <%= film.author %> <%= film.genre %> <%= film.year %>
+        </p>
+      </div>
+      <footer class="card-footer">
+        <p class="card-footer-item">
+      <span>
+        <%= link_to 'edit', edit_film_path(film) %>
+      </span>
+        </p>
+        <p class="card-footer-item">
+      <span>
+        <%= link_to "add comment", new_film_comment_path(film_id: film.id) if user_signed_in? %>
+      </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+  <% end %>
+</div>
